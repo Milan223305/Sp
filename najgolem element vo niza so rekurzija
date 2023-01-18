@@ -1,0 +1,33 @@
+//ЗАДАЧА ЗА НАОЃАЊЕ НАЈГОЛЕМ ЕЛЕМЕНТ ВО НИЗА СО РЕКУРЗИЈА
+
+#include <stdio.h>
+#include <stdlib.h>
+
+    int najgolem_element(int niza[], int n){
+    if(n == 1)
+        return niza[0];
+
+    int max = najgolem_element(niza, n-1);
+
+    if(max>niza[n-1])
+    {
+        return max;
+    }
+
+    else
+    {
+        return niza[n-1];
+    }
+    }
+
+int main()
+{
+    int n, i;
+    int niza[100];
+        scanf("%d", &n);
+    for(i=0;i<n;i++){
+        scanf("%d", &niza[i]);
+    }
+        printf("Najgolemiot element e: %d", najgolem_element(niza, n));
+    return 0;
+}
