@@ -1,0 +1,33 @@
+/*Да се напише програма која што за дадена низа од природни броеви (која што се внесува од тастатура) ќе го отпечати најголемиот заеднички делител (НЗД) 
+на нејзините елементи. Програмата задолжително треба да содржи рекурзивна функција за пресметување на НЗД на два природни броја.
+
+Пример
+48 36 120 72 84
+На екран треба да се отпечати:
+NZD na elementite na ovaa niza e 12
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int nzd(int a, int b) {
+    if (b == 0)
+        return a;
+    return nzd(b, a % b);
+}
+
+int main() {
+    int n, i, a[100];
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    int result = a[0];
+    for (i = 1; i < n; i++) {
+        result = nzd(result, a[i]);
+    }
+
+    printf("NZD na elementite na ovaa niza e %d\n", result);
+    return 0;
+}
